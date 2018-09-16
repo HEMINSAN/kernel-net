@@ -156,8 +156,9 @@ EXPORT_SYMBOL(eth_rebuild_header);
  * This is normal practice and works for any 'now in use' protocol.
   而L2数据帧有三种类型：单播，多播和广播，其中广播可看作多播的一种特殊情况。Bit 0用于表示多播还是单播，当bit 0为1时，
   为多播，为0时，表示单播。
- */ ////获取链路层协议类型  ETH_P_IP等 参考http://blog.csdn.net/magina3/article/details/7323265
- //skb->protocol = eth_type_trans(skb, bp->dev);该函数对处理后skb>data跳过以太网报头，由mac_header指示以太网报头：http://www.linuxidc.com/Linux/2011-05/36065.htm
+ */
+ //获取链路层协议类型  ETH_P_IP等
+ //skb->protocol = eth_type_trans(skb, bp->dev);该函数对处理后skb->data跳过以太网报头，由mac_header指示以太网报头
 __be16 eth_type_trans(struct sk_buff *skb, struct net_device *dev)
 {
 	struct ethhdr *eth;
