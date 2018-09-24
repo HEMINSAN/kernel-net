@@ -3326,7 +3326,7 @@ int netif_rx(struct sk_buff *skb)
 
 		cpu = get_rps_cpu(skb->dev, skb, &rflow);
 		if (cpu < 0)
-			cpu = smp_processor_id();
+			cpu = smp_processor_id();	// just return 0
 
 		//这里面的数据再 process_backlog
 		ret = enqueue_to_backlog(skb, cpu, &rflow->last_qtail);

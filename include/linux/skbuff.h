@@ -1128,23 +1128,23 @@ extern void skb_add_rx_frag(struct sk_buff *skb, int i, struct page *page,
 #define SKB_FRAG_ASSERT(skb) 	BUG_ON(skb_has_frags(skb))
 #define SKB_LINEAR_ASSERT(skb)  BUG_ON(skb_is_nonlinear(skb))
 
-#ifdef NET_SKBUFF_DATA_USES_OFFSET
-static inline unsigned char *skb_tail_pointer(const struct sk_buff *skb)
-{
-	return skb->head + skb->tail;
-}
-
-static inline void skb_reset_tail_pointer(struct sk_buff *skb)
-{
-	skb->tail = skb->data - skb->head;
-}
-
-static inline void skb_set_tail_pointer(struct sk_buff *skb, const int offset)
-{
-	skb_reset_tail_pointer(skb);
-	skb->tail += offset;
-}
-#else /* NET_SKBUFF_DATA_USES_OFFSET */
+//#ifdef NET_SKBUFF_DATA_USES_OFFSET
+//static inline unsigned char *skb_tail_pointer(const struct sk_buff *skb)
+//{
+//	return skb->head + skb->tail;
+//}
+//
+//static inline void skb_reset_tail_pointer(struct sk_buff *skb)
+//{
+//	skb->tail = skb->data - skb->head;
+//}
+//
+//static inline void skb_set_tail_pointer(struct sk_buff *skb, const int offset)
+//{
+//	skb_reset_tail_pointer(skb);
+//	skb->tail += offset;
+//}
+//#else /* NET_SKBUFF_DATA_USES_OFFSET */
 static inline unsigned char *skb_tail_pointer(const struct sk_buff *skb)
 {
 	return skb->tail;
@@ -1160,7 +1160,7 @@ static inline void skb_set_tail_pointer(struct sk_buff *skb, const int offset)
 	skb->tail = skb->data + offset;
 }
 
-#endif /* NET_SKBUFF_DATA_USES_OFFSET */
+//#endif /* NET_SKBUFF_DATA_USES_OFFSET */
 
 /*
  *	Add data to an sk_buff

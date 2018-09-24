@@ -4487,7 +4487,7 @@ static inline bool rtl8169_try_rx_copy(struct sk_buff **sk_buff,
 
 	pci_dma_sync_single_for_cpu(tp->pci_dev, addr, pkt_size,
 				    PCI_DMA_FROMDEVICE);
-	skb_copy_from_linear_data(*sk_buff, skb->data, pkt_size);
+	skb_copy_from_linear_data(*sk_buff, skb->data, pkt_size);	// copy from *sk_buff->data to *skb->data
 	*sk_buff = skb;
 	done = true;
 out:
